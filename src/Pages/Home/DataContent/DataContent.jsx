@@ -1,20 +1,21 @@
 import { MdDelete } from 'react-icons/md'
 import { FaEdit } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 const DataContent = ({ jvcoData, index, control, setControl }) => {
 
 
     const { _id, name, number, Address, productSerialNo, productModelNo, productProblem, productStatus, issueDate, tentativeDate } = jvcoData;
-    
+
     const handleDelete = _id => {
-        fetch(`http://localhost:5000/addData/${_id}`,{
+        fetch(`http://localhost:5000/addData/${_id}`, {
             method: 'DELETE'
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setControl(!control)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setControl(!control)
+            })
     }
 
     return (
@@ -30,7 +31,9 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
             <td>{tentativeDate}</td>
             <td>{productStatus}</td>
             <td className='flex items-center justify-between'>
-                <FaEdit className='cursor-pointer'></FaEdit>
+                <Link to={`/home/${_id}`}>
+                    <FaEdit className='cursor-pointer'></FaEdit>
+                </Link>
                 <MdDelete onClick={() => handleDelete(_id)} className='cursor-pointer'></MdDelete>
             </td>
         </tr>
