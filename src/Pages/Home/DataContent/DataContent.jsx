@@ -8,7 +8,7 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
     const { _id, name, number, Address, productSerialNo, productModelNo, productProblem, productStatus, issueDate, tentativeDate } = jvcoData;
 
     const handleDelete = _id => {
-        fetch(`http://localhost:5000/addData/${_id}`, {
+        fetch(`https://fahim-crud-server-1qqssc0wc-nurmorshed7987-gmailcom.vercel.app/addData/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

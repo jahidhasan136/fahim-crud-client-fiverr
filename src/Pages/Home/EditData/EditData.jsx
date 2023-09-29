@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import DataContent from "../DataContent/DataContent";
-import FilterData from "../FilterData/FilterData";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -15,7 +14,7 @@ const EditData = () => {
     const [search, setSearch] = useState('')
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/addData')
+    //     fetch('https://fahim-crud-server-1qqssc0wc-nurmorshed7987-gmailcom.vercel.app/addData')
     //         .then(res => res.json())
     //         .then(data => {
     //             console.log(data)
@@ -26,7 +25,7 @@ const EditData = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`http://localhost:5000/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
+            const response = await fetch(`https://fahim-crud-server-1qqssc0wc-nurmorshed7987-gmailcom.vercel.app/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
             const data = await response.json();
             setData(data);
         }
@@ -40,10 +39,9 @@ const EditData = () => {
     const pageNumbers = [...Array(totalPages).keys()];
 
     const handleSearch = () => {
-        console.log(searchRef.current.value)
         setSearch(searchRef.current.value);
     }
-    
+
 
     return (
         <>
