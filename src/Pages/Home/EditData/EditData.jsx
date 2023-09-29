@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DataContent from "../DataContent/DataContent";
 import FilterData from "../FilterData/FilterData";
 import { useLoaderData } from "react-router-dom";
@@ -10,22 +10,40 @@ const EditData = () => {
     const [control, setControl] = useState(false);
     const {totalData} = useLoaderData();
     const [currentPage, setCurrentPage] = useState(0);
-    const [itemPerPage, setItemPerPage] = useState(2)
+    const [itemPerPage, setItemPerPage] = useState(5)
+    const searchRef = useRef(null)
+    const [search, setSearch] = useState('')
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/addData')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setData(data)
+    //         })
+    // }, [control])
+
 
     useEffect(() => {
-        fetch('http://localhost:5000/addData')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setData(data)
-            })
-    }, [control])
+        async function fetchData() {
+            const response = await fetch(`http://localhost:5000/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
+            const data = await response.json();
+            setData(data);
+        }
+        fetchData();
+    },[currentPage, itemPerPage, control, search])
+
 
     const totalPages = Math.ceil(totalData / itemPerPage)
     console.log(totalPages)
 
     const pageNumbers = [...Array(totalPages).keys()];
 
+    const handleSearch = () => {
+        console.log(searchRef.current.value)
+        setSearch(searchRef.current.value);
+    }
+    
 
     return (
         <>
@@ -33,7 +51,8 @@ const EditData = () => {
                 <h1 className="text-3xl font-bold">This is edit page</h1>
                 <p>{data.length}</p>
                 <div className="my-10 flex justify-end">
-                    <FilterData></FilterData>
+                    {/* <FilterData></FilterData> */}
+                    <input ref={searchRef} onChange={handleSearch} className="border rounded-md border-fuchsia-400 px-3 py-2" type="text"  />
                 </div>
                 <div>
                     <div className="overflow-x-auto">
@@ -67,7 +86,7 @@ const EditData = () => {
                 {
                     pageNumbers.map(number => <button className="px-4 bg-yellow-300 rounded-md mr-4" key={number}
                     onClick={() => setCurrentPage(number)}
-                    >{number}</button>)
+                    >{number + 1}</button>)
                 }
             </div>
         </>
