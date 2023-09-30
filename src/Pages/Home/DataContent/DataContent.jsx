@@ -4,11 +4,17 @@ import { Link } from 'react-router-dom';
 
 const DataContent = ({ jvcoData, index, control, setControl }) => {
 
+    const { _id, name, number, address, productSerialNo, productModelNo, productProblem, productStatus, issueDate, tentativeDate } = jvcoData;
 
-    const { _id, name, number, Address, productSerialNo, productModelNo, productProblem, productStatus, issueDate, tentativeDate } = jvcoData;
+    // Calculate the number of days left
+    const issueDateObj = new Date(issueDate);
+    const tentativeDateObj = new Date(tentativeDate);
+    const timeDifference = tentativeDateObj - issueDateObj;
+    const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
+    
     const handleDelete = _id => {
-        fetch(`https://fahim-crud-server-1qqssc0wc-nurmorshed7987-gmailcom.vercel.app/addData/${_id}`, {
+        fetch(`http://localhost:5000/addData/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -23,12 +29,13 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
             <td>{index + 1}</td>
             <td>{name}</td>
             <td>{number}</td>
-            <td>{Address}</td>
+            <td>{address}</td>
             <td>{productSerialNo}</td>
             <td>{productModelNo}</td>
             <td>{productProblem}</td>
             <td>{issueDate}</td>
             <td>{tentativeDate}</td>
+            <td>{daysLeft}</td>
             <td>{productStatus}</td>
             <td className='flex items-center justify-between'>
                 <Link to={`/home/${_id}`}>

@@ -13,19 +13,10 @@ const EditData = () => {
     const searchRef = useRef(null)
     const [search, setSearch] = useState('')
 
-    // useEffect(() => {
-    //     fetch('https://fahim-crud-server-1qqssc0wc-nurmorshed7987-gmailcom.vercel.app/addData')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             setData(data)
-    //         })
-    // }, [control])
-
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://fahim-crud-server-1qqssc0wc-nurmorshed7987-gmailcom.vercel.app/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
+            const response = await fetch(`http://localhost:5000/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
             const data = await response.json();
             setData(data);
         }
@@ -66,6 +57,7 @@ const EditData = () => {
                                     <th>Product Problem</th>
                                     <th>Issued Date</th>
                                     <th>Tentative Date</th>
+                                    <th>Day Left</th>
                                     <th>Product Status</th>
                                     <th>Actions</th>
                                 </tr>
