@@ -12,9 +12,9 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
     const timeDifference = tentativeDateObj - issueDateObj;
     const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
-    
+
     const handleDelete = _id => {
-        fetch(`http://localhost:5000/addData/${_id}`, {
+        fetch(`https://fahim-crud-server-ljyhh9jj9-nurmorshed7987-gmailcom.vercel.app/addData/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
