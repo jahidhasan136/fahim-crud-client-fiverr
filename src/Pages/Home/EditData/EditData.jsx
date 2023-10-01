@@ -16,7 +16,7 @@ const EditData = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://fahim-crud-server-ljyhh9jj9-nurmorshed7987-gmailcom.vercel.app/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
+            const response = await fetch(`http://localhost:5000/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
             const data = await response.json();
             setData(data);
         }
@@ -30,8 +30,10 @@ const EditData = () => {
     const pageNumbers = [...Array(totalPages).keys()];
 
     const handleSearch = () => {
-        setSearch(searchRef.current.value);
-    }
+        const searchTerms = searchRef.current.value.split(' ');
+        setSearch(searchTerms.join(' '));
+    };
+    
 
 
     return (
@@ -58,6 +60,7 @@ const EditData = () => {
                                     <th>Issued Date</th>
                                     <th>Tentative Date</th>
                                     <th>Day Left</th>
+                                    <th>Live Status</th>
                                     <th>Product Status</th>
                                     <th>Actions</th>
                                 </tr>

@@ -3,8 +3,18 @@ import { FaEdit } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 
 const DataContent = ({ jvcoData, index, control, setControl }) => {
-
-    const { _id, name, number, address, productSerialNo, productModelNo, productProblem, productStatus, issueDate, tentativeDate } = jvcoData;
+    const {
+        _id,
+        name,
+        number,
+        address,
+        productSerialNo,
+        productModelNo,
+        productProblem,
+        productStatus,
+        issueDate,
+        tentativeDate
+    } = jvcoData;
 
     // Calculate the number of days left
     const issueDateObj = new Date(issueDate);
@@ -12,17 +22,33 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
     const timeDifference = tentativeDateObj - issueDateObj;
     const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
+    // Map productStatus values to new values
+    const updatedProductStatus = (productStatus) => {
+        if (daysLeft === 0) {
+            return <p className='bg-red-500'>Expired</p>;
+        } else if(daysLeft === 5){
+            return 'Expired Soon'
+        }
+        switch (productStatus) {
+            case 'recieved':
+                return 'Active';
+            case 'delivered':
+                return 'Done';
+            default:
+                return productStatus;
+        }
+    };
 
-    const handleDelete = _id => {
-        fetch(`https://fahim-crud-server-ljyhh9jj9-nurmorshed7987-gmailcom.vercel.app/addData/${_id}`, {
+    const handleDelete = (_id) => {
+        fetch(`http://localhost:5000/addData/${_id}`, {
             method: 'DELETE'
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setControl(!control)
-            })
-    }
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setControl(!control);
+            });
+    };
 
     return (
         <tr>
@@ -36,6 +62,7 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
             <td>{issueDate}</td>
             <td>{tentativeDate}</td>
             <td>{daysLeft}</td>
+            <td>{updatedProductStatus(productStatus)}</td>
             <td>{productStatus}</td>
             <td className='flex items-center justify-between'>
                 <Link to={`/home/${_id}`}>
