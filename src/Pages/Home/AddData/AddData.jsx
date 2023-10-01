@@ -8,7 +8,7 @@ const AddData = () => {
         handleSubmit, reset
     } = useForm();
     const onSubmit = (data) => {
-        fetch('http://localhost:5000/addData',{
+        fetch('https://fahim-crud-server-2rul2egi3-nurmorshed7987-gmailcom.vercel.app/addData',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -93,6 +93,8 @@ const AddData = () => {
                             <select className="border rounded-md pl-4 py-2 w-[250px]" {...register("productStatus", { required: true })}>
                                 <option value="recieved">Recieved</option>
                                 <option value="delivered">Delivered</option>
+                                <option value="Still Working">Still Working</option>
+                                <option value="ok">Ok</option>
                             </select>
                         </div>
                     </div>

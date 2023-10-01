@@ -10,7 +10,7 @@ const UpdateData = () => {
         handleSubmit
     } = useForm();
     const onSubmit = (data) => {
-        fetch(`http://localhost:5000/addData/${loader._id}`,{
+        fetch(`https://fahim-crud-server-2rul2egi3-nurmorshed7987-gmailcom.vercel.app/addData/${loader._id}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -20,7 +20,7 @@ const UpdateData = () => {
         .then(res => res.json())
         .then(data => {console.log(data)})
     }
-    
+
     return (
         <div className="mt-24">
                 <form onSubmit={handleSubmit(onSubmit)}>

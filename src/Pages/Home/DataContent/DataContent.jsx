@@ -40,7 +40,7 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
     };
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/addData/${_id}`, {
+        fetch(`https://fahim-crud-server-2rul2egi3-nurmorshed7987-gmailcom.vercel.app/addData/${_id}`, {
             method: 'DELETE'
         })
             .then((res) => res.json())
