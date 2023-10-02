@@ -18,12 +18,12 @@ export const router = createBrowserRouter([
       {
         path: '/editData',
         element: <EditData></EditData>,
-        loader: () => fetch('http://localhost:5000/totalData')
+        loader: () => fetch('https://fahim-crud-server-15s1luhr7-nurmorshed7987-gmailcom.vercel.app/totalData')
       },
       {
         path: '/home/:id',
         element: <UpdateData></UpdateData>,
-        loader: ({params}) => fetch(`http://localhost:5000/addData/${params.id}`)
+        loader: ({params}) => fetch(`https://fahim-crud-server-15s1luhr7-nurmorshed7987-gmailcom.vercel.app/addData/${params.id}`)
       },
     ]
   },
