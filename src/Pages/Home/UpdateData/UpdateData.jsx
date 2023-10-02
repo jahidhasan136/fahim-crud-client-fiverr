@@ -90,6 +90,8 @@ const UpdateData = () => {
                             {...register("productStatus", { required: true })}>
                                 <option value="recieved">Recieved</option>
                                 <option value="delivered">Delivered</option>
+                                <option value="Still Working">Still Working</option>
+                                <option value="ok">Ok</option>
                             </select>
                         </div>
                     </div>
