@@ -49,7 +49,7 @@ const EditData = () => {
                         <table className="table table-md">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No.</th>
                                     <th>Name</th>
                                     <th>Number</th>
                                     <th>Address</th>
