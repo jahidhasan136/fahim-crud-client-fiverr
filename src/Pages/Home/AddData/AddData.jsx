@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaUserEdit } from 'react-icons/fa'
 import { Link } from "react-router-dom";
 
@@ -19,12 +20,13 @@ const AddData = () => {
             .then(data => {
                 console.log(data)
             })
+            toast.success('Submitted your information successfully')
         reset()
     }
     return (
         <div className="container">
             <div className="flex justify-end">
-                <Link to='/editData'><button className="bg-amber-400 px-5 py-3 rounded-md flex items-center gap-2 font-medium text-white text-lg">Edit Data <FaUserEdit></FaUserEdit></button></Link>
+                <Link to='/editData'><button className="bg-amber-400 px-5 py-3 rounded-md flex items-center gap-2 font-medium text-white text-lg">Edit Entry <FaUserEdit></FaUserEdit></button></Link>
             </div>
             <div className="mt-12 w-4/5 mx-auto shadow-md px-8">
                 <h2 className="font-bold text-2xl pt-5">Entry to database</h2>
@@ -36,49 +38,49 @@ const AddData = () => {
                             <label className="font-bold">
                                 <p className=" mb-2">Full Name</p>
                             </label>
-                            <input className="border rounded-md pl-4 py-3 w-full" placeholder="Enter your name" type="text" {...register("name", { required: true })} />
+                            <input className="border rounded-md px-4 py-3 w-full" placeholder="Enter your name" type="text" {...register("name", { required: true })} />
                         </div>
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Mobile Number</p>
                             </label>
-                            <input className="border rounded-md pl-4 py-3 w-full" placeholder="Enter your number" type="text" {...register("number", { required: true })} />
+                            <input className="border rounded-md px-4 py-3 w-full" placeholder="Enter your number" type="text" {...register("number", { required: true })} />
                         </div>
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Address</p>
                             </label>
-                            <input className="border rounded-md pl-4 py-3 w-full" placeholder="Enter your address" type="text" {...register("address", { required: true })} />
+                            <input className="border rounded-md px-4 py-3 w-full" placeholder="Enter your address" type="text" {...register("address", { required: true })} />
                         </div>
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Product Serial No</p>
                             </label>
-                            <input className="border rounded-md pl-4 py-3 w-full" placeholder="Enter your serial no" type="text" {...register("productSerialNo", { required: true })} />
+                            <input className="border rounded-md px-4 py-3 w-full" placeholder="Enter your serial no" type="text" {...register("productSerialNo", { required: true })} />
                         </div>
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Product Model No</p>
                             </label>
-                            <input className="border rounded-md pl-4 py-3 w-full" placeholder="Enter your model" type="text" {...register("productModelNo", { required: true })} />
+                            <input className="border rounded-md px-4 py-3 w-full" placeholder="Enter your model" type="text" {...register("productModelNo", { required: true })} />
                         </div>
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Issued Date</p>
                             </label>
-                            <input className="border rounded-md pl-4 py-3 w-full" type="date" {...register("issueDate", { required: true })} />
+                            <input className="border rounded-md px-4 py-3 w-full" type="date" {...register("issueDate", { required: true })} />
                         </div>
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Tentative Date</p>
                             </label>
-                            <input className="border rounded-md pl-4 py-3 w-full" type="date" {...register("tentativeDate", { required: true })} />
+                            <input className="border rounded-md px-4 py-3 w-full" type="date" {...register("tentativeDate", { required: true })} />
                         </div>
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Product Problem</p>
                             </label>
-                            <select className="border rounded-md pl-4 py-3 w-full" {...register("productProblem", { required: true })}>
+                            <select className="border rounded-md px-4 py-3 w-full" {...register("productProblem", { required: true })}>
                                 <option value="panelProblem">Panel Problem</option>
                                 <option value="panelBroken">Panel Broken</option>
                                 <option value="pcbBurned">Pcb Burned</option>
@@ -92,7 +94,7 @@ const AddData = () => {
                             <label className="font-bold">
                                 <p className=" mb-2">Product Status</p>
                             </label>
-                            <select className="border rounded-md pl-4 py-3 w-full" {...register("productStatus", { required: true })}>
+                            <select className="border rounded-md px-4 py-3 w-full" {...register("productStatus", { required: true })}>
                                 <option value="recieved">Recieved</option>
                                 <option value="delivered">Delivered</option>
                                 <option value="Still Working">Still Working</option>

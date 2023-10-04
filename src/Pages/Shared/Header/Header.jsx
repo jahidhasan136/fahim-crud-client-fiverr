@@ -3,7 +3,7 @@ import logo from './images/logo.png'
 
 const Header = () => {
     return (
-        <div className='shadow-xl mb-[60px]'>
+        <div className='shadow-lg mb-[60px]'>
             <div className='flex justify-between items-center container py-5'>
                 <Link to='/'>
                     <img className='w-[100px]' src={logo} alt="" />

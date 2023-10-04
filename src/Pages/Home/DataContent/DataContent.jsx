@@ -25,7 +25,7 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
     // Map productStatus values to new values
     const updatedProductStatus = (productStatus) => {
         if (daysLeft === 0) {
-            return <p className='bg-red-500'>Expired</p>;
+            return <p className='bg-red-500 text-white pl-2 rounded-full'>Expired</p>;
         } else if(daysLeft === 5){
             return 'Expired Soon'
         }
@@ -66,9 +66,9 @@ const DataContent = ({ jvcoData, index, control, setControl }) => {
             <td>{productStatus}</td>
             <td className='flex items-center justify-between'>
                 <Link to={`/home/${_id}`}>
-                    <FaEdit className='cursor-pointer'></FaEdit>
+                    <FaEdit className='cursor-pointer text-lg text-green-500'></FaEdit>
                 </Link>
-                <MdDelete onClick={() => handleDelete(_id)} className='cursor-pointer'></MdDelete>
+                <MdDelete onClick={() => handleDelete(_id)} className='cursor-pointer text-lg text-red-500'></MdDelete>
             </td>
         </tr>
     );

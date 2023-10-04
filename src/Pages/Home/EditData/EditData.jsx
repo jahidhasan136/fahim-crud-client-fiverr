@@ -7,9 +7,9 @@ const EditData = () => {
 
     const [data, setData] = useState([]);
     const [control, setControl] = useState(false);
-    const {totalData} = useLoaderData();
+    const { totalData } = useLoaderData();
     const [currentPage, setCurrentPage] = useState(0);
-    const [itemPerPage, setItemPerPage] = useState(5)
+    const [itemPerPage, setItemPerPage] = useState(10)
     const searchRef = useRef(null)
     const [search, setSearch] = useState('')
 
@@ -22,7 +22,7 @@ const EditData = () => {
             console.log(data)
         }
         fetchData();
-    },[currentPage, itemPerPage, control, search])
+    }, [currentPage, itemPerPage, control, search])
 
 
     const totalPages = Math.ceil(totalData / itemPerPage)
@@ -34,13 +34,13 @@ const EditData = () => {
         const searchTerms = searchRef.current.value.split(' ');
         setSearch(searchTerms.join(' '));
     };
-    
+
     return (
         <>
             <div className="container">
                 <div className="my-10 flex justify-end">
                     {/* <FilterData></FilterData> */}
-                    <input ref={searchRef} onChange={handleSearch} className="border rounded-md border-fuchsia-400 px-3 py-2" type="text"  />
+                    <input placeholder="search your data ..." ref={searchRef} onChange={handleSearch} className="border rounded-md px-3 py-2" type="text" />
                 </div>
                 <div>
                     <div className="overflow-x-auto">
@@ -71,11 +71,10 @@ const EditData = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <p>{currentPage}</p>
+            <div className="container flex justify-end my-2">
                 {
-                    pageNumbers?.map(number => <button className="px-4 bg-yellow-300 rounded-md mr-4" key={number}
-                    onClick={() => setCurrentPage(number)}
+                    pageNumbers?.map(number => <button className="px-4 bg-yellow-300 rounded-md mr-2" key={number}
+                        onClick={() => setCurrentPage(number)}
                     >{number + 1}</button>)
                 }
             </div>
