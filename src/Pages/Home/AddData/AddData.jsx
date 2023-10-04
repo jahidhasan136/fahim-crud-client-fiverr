@@ -31,7 +31,7 @@ const AddData = () => {
                 <div className="w-10 h-[2px] bg-[#00B6B0] mb-5"></div>
                 <p className="font-medium uppercase">Product Details</p>
                 <form onSubmit={handleSubmit(onSubmit)} className="pb-8 pt-4">
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                         <div className="">
                             <label className="font-bold">
                                 <p className=" mb-2">Full Name</p>
@@ -100,8 +100,8 @@ const AddData = () => {
                             </select>
                         </div>
                     </div>
-                    <div className="flex justify-end">
-                        <input className="cursor-pointer bg-[#00B6B0] hover:bg-[#00b69e] transition-all duration-500 px-10 py-3 rounded-md mt-5 text-white" type="submit" />
+                    <div className="flex justify-end mt-8">
+                        <input className="cursor-pointer bg-[#00B6B0] hover:bg-[#00b69e] transition-all duration-500 px-10 py-3 rounded-md text-white" type="submit" />
                     </div>
                 </form>
             </div>
