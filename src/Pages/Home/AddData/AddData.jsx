@@ -101,7 +101,7 @@ const AddData = () => {
                         </div>
                     </div>
                     <div className="flex justify-end mt-8">
-                        <input className="cursor-pointer bg-[#00B6B0] hover:bg-[#00b69e] transition-all duration-500 px-10 py-3 rounded-md text-white" type="submit" />
+                        <input className="cursor-pointer bg-[#00B6B0] hover:bg-[#24c4be] transition-all duration-500 px-10 py-3 rounded-md text-white" type="submit" />
                     </div>
                 </form>
             </div>
