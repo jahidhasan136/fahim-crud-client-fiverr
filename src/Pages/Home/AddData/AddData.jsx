@@ -9,7 +9,7 @@ const AddData = () => {
         handleSubmit, reset
     } = useForm();
     const onSubmit = (data) => {
-        fetch('http://localhost:5000/addData', {
+        fetch('https://fahim-crud-server-ilhvxjxko-nurmorshed7987-gmailcom.vercel.app/addData', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
