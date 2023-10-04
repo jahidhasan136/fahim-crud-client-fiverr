@@ -24,10 +24,13 @@ const AddData = () => {
     return (
         <div className="container">
             <div className="flex justify-end">
-                <Link to='/editData'><button className="bg-amber-400 px-5 py-3 rounded-md flex items-center gap-2 font-medium text-white">Edit Data <FaUserEdit></FaUserEdit></button></Link>
+                <Link to='/editData'><button className="bg-amber-400 px-5 py-3 rounded-md flex items-center gap-2 font-medium text-white text-lg">Edit Data <FaUserEdit></FaUserEdit></button></Link>
             </div>
-            <div className="mt-24 w-4/5 mx-auto">
-                <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mt-12 w-4/5 mx-auto shadow-md px-8">
+                <h2 className="font-bold text-2xl pt-5">Entry to database</h2>
+                <div className="w-10 h-[2px] bg-[#00B6B0] mb-5"></div>
+                <p className="font-medium uppercase">Product Details</p>
+                <form onSubmit={handleSubmit(onSubmit)} className="pb-8 pt-4">
                     <div className="grid grid-cols-3 gap-5">
                         <div className="">
                             <label className="font-bold">
