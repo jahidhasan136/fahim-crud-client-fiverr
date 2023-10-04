@@ -37,7 +37,7 @@ const EditData = () => {
     
     return (
         <>
-            <div>
+            <div className="container">
                 <h1 className="text-3xl font-bold">This is edit page</h1>
                 <p>{data?.length}</p>
                 <div className="my-10 flex justify-end">
