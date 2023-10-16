@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import DataContent from "../DataContent/DataContent";
 import { useLoaderData } from "react-router-dom";
-
+import { BiSolidPrinter } from 'react-icons/bi'
+import { useReactToPrint } from 'react-to-print';
+// import { ComponentToPrint } from './ComponentToPrint';
 
 const EditData = () => {
 
@@ -17,7 +19,7 @@ const EditData = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://fahim-crud-server-ilhvxjxko-nurmorshed7987-gmailcom.vercel.app/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
+            const response = await fetch(`https://fahim-crud-server-jhum2y8an-nurmorshed7987-gmailcom.vercel.app/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
             const data = await response.json();
             setData(data);
             setLoading(false)
@@ -25,15 +27,22 @@ const EditData = () => {
         fetchData();
     }, [currentPage, itemPerPage, control, search])
 
+    // const totalPages = Math.ceil(totalData / itemPerPage)
+    // const pageNumbers = [...Array(totalPages).keys()];
 
-    const totalPages = Math.ceil(totalData / itemPerPage)
 
-    const pageNumbers = [...Array(totalPages).keys()];
+    const totalPages = Math.ceil(totalData / itemPerPage) || 1;
+    const pageNumbers = Array.from({ length: totalPages }, (_, i) => i);
 
     const handleSearch = () => {
         const searchTerms = searchRef.current.value.split(' ');
         setSearch(searchTerms.join(' '));
     };
+
+    const printRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => printRef.current,
+    });
 
     return (
         <>
@@ -46,9 +55,10 @@ const EditData = () => {
                             <div className="my-10 flex justify-end">
                                 <input placeholder="search your data ..." ref={searchRef} onChange={handleSearch} className="border rounded-md px-3 py-2" type="text" />
                             </div>
+                            <BiSolidPrinter onClick={handlePrint} className="text-xl mb-4 flex justify-end text-end" />
                             <div>
                                 <div className="overflow-x-auto">
-                                    <table className="table table-md">
+                                    <table ref={printRef} className="table table-md">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
