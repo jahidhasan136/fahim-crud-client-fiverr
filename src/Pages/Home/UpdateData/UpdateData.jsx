@@ -11,7 +11,7 @@ const UpdateData = () => {
         handleSubmit
     } = useForm();
     const onSubmit = (data) => {
-        fetch(`https://fahim-crud-server-jhum2y8an-nurmorshed7987-gmailcom.vercel.app/addData/${loader._id}`, {
+        fetch(`https://fahim-crud-server-3bt9ltv7v-nurmorshed7987-gmailcom.vercel.app/addData/${loader._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

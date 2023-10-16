@@ -19,7 +19,7 @@ const EditData = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`https://fahim-crud-server-jhum2y8an-nurmorshed7987-gmailcom.vercel.app/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
+            const response = await fetch(`https://fahim-crud-server-3bt9ltv7v-nurmorshed7987-gmailcom.vercel.app/addData?search=${search}&page=${currentPage}&limit=${itemPerPage}`);
             const data = await response.json();
             setData(data);
             setLoading(false)
@@ -55,7 +55,9 @@ const EditData = () => {
                             <div className="my-10 flex justify-end">
                                 <input placeholder="search your data ..." ref={searchRef} onChange={handleSearch} className="border rounded-md px-3 py-2" type="text" />
                             </div>
-                            <BiSolidPrinter onClick={handlePrint} className="text-xl mb-4 flex justify-end text-end" />
+                            <div className="flex justify-end">
+                                <BiSolidPrinter onClick={handlePrint} className="text-xl mb-4 cursor-pointer" />
+                            </div>
                             <div>
                                 <div className="overflow-x-auto">
                                     <table ref={printRef} className="table table-md">
